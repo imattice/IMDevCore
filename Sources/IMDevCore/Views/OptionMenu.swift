@@ -1,5 +1,5 @@
 //
-//  SelectableMenu.swift
+//  OptionMenu.swift
 //  
 //
 //  Created by Ike Mattice on 2/20/23.
@@ -7,15 +7,15 @@
 
 import SwiftUI
 
-/// Defines a object that can be used to drive a ``SelectableMenu`` and conforms to both ``Hashable`` and ``CaseIterable`` protocols
-public typealias MenuDataSource = Hashable & CaseIterable
+/// Defines a object that can be used to drive a ``OptionMenu`` and conforms to both ``Hashable`` and ``CaseIterable`` protocols
+public typealias OptionMenuDataSource = Hashable & CaseIterable
 
-/// A View that organizes a ``MenuDataSource`` into a ``ForEach`` and can be presented as a menu that can select options
+/// A View that organizes a ``OptionMenuDataSource`` into a ``ForEach`` and can be presented as a menu that can select options
 ///
-/// This View works best when powered by an enum that conforms to ``MenuDataSource``, which most enums can conform to automatically.
+/// This View works best when powered by an enum that conforms to ``OptionMenuDataSource``, which most enums can conform to automatically.
 ///
 /// It is also flexible to be used in a variety of ways, such as within a ``List``, ``VStack``, or ``HStack``
-public struct SelectableMenu<T: MenuDataSource, CellContent: View>: View {
+public struct OptionMenu<T: OptionMenuDataSource, CellContent: View>: View {
     /// Defines a ``String`` that is used to title the cell ViewBuilder
     public typealias CellTitle = String
     /// Defines a ``Bool`` that is used to determine if the cell is selected
@@ -57,7 +57,7 @@ public struct SelectableMenu<T: MenuDataSource, CellContent: View>: View {
         HStack {
             Image(systemName: "checkmark")
                 .opacity(option == selection ? 1 : 0)
-            Text(String(describing: option).titleCased)
+            Text(cellTitle(for: option))
             Spacer()
         }
         .padding()
@@ -82,8 +82,8 @@ public struct SelectableMenu<T: MenuDataSource, CellContent: View>: View {
 }
 
 // MARK: - Init
-extension SelectableMenu {
-    /// Creates a ``SelectableMenu`` from the provided selection and a custom cell View
+extension OptionMenu {
+    /// Creates a ``OptionMenu`` from the provided selection and a custom cell View
     /// - Parameters:
     ///   - selection: The selected option, if any
     ///   - cellContent: A ViewBuilder that creates the cell content.  Provides a String to be used as the cell title, and a Bool to determine the state of the cell if selected or unselected
@@ -95,8 +95,8 @@ extension SelectableMenu {
     }
 }
 
-extension SelectableMenu where CellContent == EmptyView {
-    /// Creates a ``SelectableMenu`` from the provided selection using the default cell ViewBuilder
+extension OptionMenu where CellContent == EmptyView {
+    /// Creates a ``OptionMenu`` from the provided selection using the default cell ViewBuilder
     /// - Parameter selection: The selected option, if any
     public init(selection: Binding<T?>) {
         self._selection = selection
@@ -105,7 +105,7 @@ extension SelectableMenu where CellContent == EmptyView {
 }
 
 // MARK: - Previews
-struct SelectableMenu_Previews: PreviewProvider {
+struct OptionMenu_Previews: PreviewProvider {
     @State static var selectedOption: Option? = .oneFinalOption
 
     static var previews: some View {
@@ -116,11 +116,11 @@ struct SelectableMenu_Previews: PreviewProvider {
 }
 
 // MARK: Preview View Builders
-extension SelectableMenu_Previews {
+extension OptionMenu_Previews {
     @ViewBuilder
     static var defaultCellInList: some View {
         List {
-            SelectableMenu(selection: $selectedOption)
+            OptionMenu(selection: $selectedOption)
         }
         .previewDisplayName("Default Cell in List")
     }
@@ -128,7 +128,7 @@ extension SelectableMenu_Previews {
     @ViewBuilder
     static var customCellInList: some View {
         List {
-            SelectableMenu(selection: $selectedOption) { cellTitle, isSelected in
+            OptionMenu(selection: $selectedOption) { cellTitle, isSelected in
                 customCell(titled: cellTitle, isSelected: isSelected)
             }
         }
@@ -144,7 +144,7 @@ extension SelectableMenu_Previews {
 }
 
 // MARK: Preview Options
-extension SelectableMenu_Previews {
+extension OptionMenu_Previews {
     enum Option: CaseIterable {
         case optionOne
         case another
