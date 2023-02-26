@@ -36,6 +36,7 @@ public struct OptionMenu<T: OptionMenuDataSource, CellContent: View>: View {
     public var body: some View {
         ForEach(options, id: \.self) { model in
             cellContent(for: model)
+                .contentShape(Rectangle())
                 .onTapGesture {
                     didTapCell(for: model)
                 }
