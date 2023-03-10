@@ -56,12 +56,9 @@ public struct OptionMenu<T: OptionMenuDataSource, CellContent: View>: View {
     /// A default cell used if no cell builder is provided
     @ViewBuilder
     private func defaultCell(for option: T) -> some View {
-        HStack {
-            Image(systemName: "checkmark")
-                .opacity(option == selection ? 1 : 0)
-            Text(option.label)
-            Spacer()
-        }
+        SelectableCell(
+            title: option.label,
+            isSelected: option == selection)
         .padding()
     }
 
