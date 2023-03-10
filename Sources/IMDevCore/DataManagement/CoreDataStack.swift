@@ -8,7 +8,7 @@
 import CoreData
 
 /// A object used to interact with ``CoreData``
-public class CoreDataStack {
+open class CoreDataStack {
     /// The context that runs on the main thread
     ///
     /// Methods that are run on the main thread can block UI
@@ -17,7 +17,7 @@ public class CoreDataStack {
     }
 
     /// The persistent container for CoreData
-    public var persistentContainer: NSPersistentContainer
+    open var persistentContainer: NSPersistentContainer
 
     /// Creates a new ``CoreDataStack`` for the given store file name
     /// - Parameter persistentStoreName: The file name for the core data store file
