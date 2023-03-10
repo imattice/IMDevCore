@@ -34,12 +34,26 @@ public class CoreDataStack {
         self.persistentContainer = container
     }
 
+    /// Fetches the provided request data on the main context
+    /// - Parameter request: The request to fetch
+    public func fetch(_ request: NSFetchRequest<NSFetchRequestResult>) -> [NSFetchRequestResult] {
+        do {
+             return try mainContext.fetch(request)
+        } catch {
+            print("Failed to fetch results while attempting to fetch \(String(describing: NSFetchRequestResult.self))")
+            print("Fetch error: \(error)")
+
+            return [ ]
+        }
+    }
+
     /// Saves the current state of the main context
     public func saveMainContext() {
         do {
             try mainContext.save()
         } catch {
             print("Failed to save context")
+            print("Save error: \(error)")
         }
     }
 }

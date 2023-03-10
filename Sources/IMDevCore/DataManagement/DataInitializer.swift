@@ -16,6 +16,9 @@ public class DataInitializer {
         UserDefaults.standard.bool(forKey: databaseInitializationKey)
     }
 
+    /// Creates a new ``DataInitializer``
+    public init() { /* Empty public initializer */ }
+
     /// Destroys the current store and replaces it with a  new store, effectively wiping all data from the persistent stores
     /// - Parameter dataStack: The data stack to clear
     public func clearData(from dataStack: CoreDataStack) {
