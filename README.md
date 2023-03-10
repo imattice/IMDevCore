@@ -1,3 +1,3 @@
 # IMDevCore
 
-A description of this package.
+A collection of utilities used in projects authored by Ike Mattice.
