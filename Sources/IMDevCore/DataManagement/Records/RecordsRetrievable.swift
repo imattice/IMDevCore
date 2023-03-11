@@ -8,10 +8,7 @@
 import CoreData
 
 /// Describes an object that can fetch all persisted objects and convert them to ``Self``
-protocol RecordsRetrievable: RecordCreatable {
-    /// The ``NSManagedObject`` type that backs ``Self``'s creation
-    associatedtype Record: NSManagedObject
-
+public protocol RecordsRetrievable: RecordCreatable {
     /// Fetches all instances of the ``NSManagedObject``'s that back this type, and converts them into ``Self``
     /// - Parameter coreDataStack: The ``CoreDataStack`` that contains the persisted ``NSManagedObject``
     /// - Returns: A collection of ``Self`` that are generated from the persisted ``NSManagedObject``s
