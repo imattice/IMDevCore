@@ -14,7 +14,7 @@ extension AppStorage {
     /// - Parameters:
     ///   - userDefaultsKey: The key to store the value under
     ///   - store: The ``UserDefaults`` store to persist the value to, with a default of ``nil``
-    init(_ userDefaultsKey: some  UserDefaultsKey, store: UserDefaults? = nil) where Value == Bool? {
+    public init(_ userDefaultsKey: some  UserDefaultsKey, store: UserDefaults? = nil) where Value == Bool? {
         self.init(userDefaultsKey.key, store: store)
     }
 
@@ -22,7 +22,7 @@ extension AppStorage {
     /// - Parameters:
     ///   - userDefaultsKey: The key to store the value under
     ///   - store: The ``UserDefaults`` store to persist the value to, with a default of ``nil``
-    init(_ userDefaultsKey: some UserDefaultsKey, store: UserDefaults? = nil) where Value == Int? {
+    public init(_ userDefaultsKey: some UserDefaultsKey, store: UserDefaults? = nil) where Value == Int? {
         self.init(userDefaultsKey.key, store: store)
     }
 
@@ -30,7 +30,7 @@ extension AppStorage {
     /// - Parameters:
     ///   - userDefaultsKey: The key to store the value under
     ///   - store: The ``UserDefaults`` store to persist the value to, with a default of ``nil``
-    init(_ userDefaultsKey: some UserDefaultsKey, store: UserDefaults? = nil) where Value == Double? {
+    public init(_ userDefaultsKey: some UserDefaultsKey, store: UserDefaults? = nil) where Value == Double? {
         self.init(userDefaultsKey.key, store: store)
     }
 
@@ -38,7 +38,7 @@ extension AppStorage {
     /// - Parameters:
     ///   - userDefaultsKey: The key to store the value under
     ///   - store: The ``UserDefaults`` store to persist the value to, with a default of ``nil``
-    init(_ userDefaultsKey: some UserDefaultsKey, store: UserDefaults? = nil) where Value == String? {
+    public init(_ userDefaultsKey: some UserDefaultsKey, store: UserDefaults? = nil) where Value == String? {
         self.init(userDefaultsKey.key, store: store)
     }
 
@@ -46,7 +46,7 @@ extension AppStorage {
     /// - Parameters:
     ///   - userDefaultsKey: The key to store the value under
     ///   - store: The ``UserDefaults`` store to persist the value to, with a default of ``nil``
-    init(_ userDefaultsKey: some UserDefaultsKey, store: UserDefaults? = nil) where Value == URL? {
+    public init(_ userDefaultsKey: some UserDefaultsKey, store: UserDefaults? = nil) where Value == URL? {
         self.init(userDefaultsKey.key, store: store)
     }
 
@@ -54,7 +54,7 @@ extension AppStorage {
     /// - Parameters:
     ///   - userDefaultsKey: The key to store the value under
     ///   - store: The ``UserDefaults`` store to persist the value to, with a default of ``nil``
-    init(_ userDefaultsKey: some UserDefaultsKey, store: UserDefaults? = nil) where Value == Data? {
+    public init(_ userDefaultsKey: some UserDefaultsKey, store: UserDefaults? = nil) where Value == Data? {
         self.init(userDefaultsKey.key, store: store)
     }
 
@@ -62,7 +62,7 @@ extension AppStorage {
     /// - Parameters:
     ///   - userDefaultsKey: The key to store the value under
     ///   - store: The ``UserDefaults`` store to persist the value to, with a default of ``nil``
-    init<R>(_ userDefaultsKey: some UserDefaultsKey, store: UserDefaults? = nil) where Value == R?, R : RawRepresentable, R.RawValue == String {
+    public init<R>(_ userDefaultsKey: some UserDefaultsKey, store: UserDefaults? = nil) where Value == R?, R : RawRepresentable, R.RawValue == String {
         self.init(userDefaultsKey.key, store: store)
     }
 }
