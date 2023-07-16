@@ -6,6 +6,7 @@
 //
 
 import XCTest
+@testable import IMDevCore
 
 final class StringSpaceSeparatedTests: XCTestCase {
     var camelCasedString: String {
