@@ -7,4 +7,4 @@
 
 import Foundation
 
-protocol ResponseModel: Decodable { }
+public protocol ResponseModel: Decodable { }

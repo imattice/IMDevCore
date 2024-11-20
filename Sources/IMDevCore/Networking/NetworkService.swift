@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class NetworkService {
+public final class NetworkService {
     static let shared: NetworkService = NetworkService()
 
     func request(_ url: URL?) async -> Result<Data, NetworkError> {
