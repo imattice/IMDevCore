@@ -8,19 +8,19 @@
 import Network
 
 public final class NetworkMonitor {
-    static let shared = NetworkMonitor()
+    public static let shared = NetworkMonitor()
 
-    let monitor: NWPathMonitor = NWPathMonitor()
+    private let monitor: NWPathMonitor = NWPathMonitor()
 
-    var status: NWPath.Status = .requiresConnection
-    var unsatisfiedReason: NWPath.UnsatisfiedReason?
-    var isReachableOnCellular: Bool = true
+    public var status: NWPath.Status = .requiresConnection
+    public var unsatisfiedReason: NWPath.UnsatisfiedReason?
+    public var isReachableOnCellular: Bool = true
 
-    var isReachable: Bool {
+    public var isReachable: Bool {
         status == .satisfied
     }
 
-    func startMonitoring() {
+    public func startMonitoring() {
         monitor.pathUpdateHandler = { [weak self] path in
             self?.status = path.status
             self?.isReachableOnCellular = path.isExpensive
@@ -38,7 +38,7 @@ public final class NetworkMonitor {
         monitor.start(queue: queue)
     }
 
-    func stopMonitoring() {
+    public func stopMonitoring() {
         monitor.cancel()
     }
 }

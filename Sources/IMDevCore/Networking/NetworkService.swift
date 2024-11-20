@@ -10,7 +10,7 @@ import Foundation
 public final class NetworkService {
     public static let shared: NetworkService = NetworkService()
 
-    func request(_ url: URL?) async -> Result<Data, NetworkError> {
+    public func request(_ url: URL?) async -> Result<Data, NetworkError> {
         guard let url else {
             return .failure(.invalidUrl)
         }
@@ -38,7 +38,7 @@ public final class NetworkService {
         }
     }
 
-    func request<ResponseModel: Codable>(_ url: URL?) async -> Result<ResponseModel, NetworkError> {
+    public func request<ResponseModel: Codable>(_ url: URL?) async -> Result<ResponseModel, NetworkError> {
         guard let url else {
             return .failure(.invalidUrl)
         }
